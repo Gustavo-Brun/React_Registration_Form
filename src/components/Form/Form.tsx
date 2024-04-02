@@ -1,5 +1,6 @@
 'use client'
 
+import axios from "axios";
 import { useForm } from "react-hook-form"
 import { Toaster, toast } from 'sonner'
 
@@ -16,8 +17,14 @@ const Form = () => {
 
     const onSubmit = (data:FormProps) => {
 
-        toast.success(`Thank you ${data.name}, you have been successfully registered.`)
-          
+        try {
+            axios.post('https://sheet.best/api/sheets/651474d5-77e1-4c2c-bab4-24484bda6871', data)
+            toast.success(`Thank you ${data.name}, you have been successfully registered.`)
+        } catch (error) {
+            toast.error("Opss, something went wrong. Please try again!")
+        }
+        
+        
     }
 
     return (
