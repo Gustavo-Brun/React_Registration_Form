@@ -1,6 +1,8 @@
 'use client'
 
 import { useForm } from "react-hook-form"
+import { Toaster, toast } from 'sonner'
+
 
 const Form = () => {
 
@@ -14,13 +16,13 @@ const Form = () => {
 
     const onSubmit = (data:FormProps) => {
 
-        window.alert(`Thank you ${data.name}, you have been successfully registered.`)
+        toast.success(`Thank you ${data.name}, you have been successfully registered.`)
           
     }
 
     return (
         <section className="m-auto lg:border-2 lg:p-20 p-10 rounded-xl border-black shadow-2xl space-y-10">
-
+            <Toaster position="top-center"/>
             <section>
                 <h1 className="lg:text-4xl text-2xl font-bold">Create an account</h1>
                 <h2 className="text-gray-500 dark:text-gray-400">Enter your information to register</h2>
@@ -54,7 +56,7 @@ const Form = () => {
                     {errors?.password?.type === 'required' && <p className="text-sm text-red-700">Password is required.</p>}
                 </div>
 
-                <button className="mx-auto lg:mt-10 rounded-2xl shadow-md text-white p-3 px-8 border-2 bg-black  font-bold active:text-red-600 active:scale-95">Register</button>
+                <button className="mx-auto lg:mt-10 mt-2 rounded-2xl shadow-md text-white p-3 px-8 border-2 bg-black  font-bold active:text-red-600 active:scale-95">Register</button>
 
             </form>
         </section>
